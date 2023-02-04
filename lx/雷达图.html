@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<script src="./echarts.min.js"></script>
+
+<body>
+    <div style="width: 600px;height: 400px;">
+
+    </div>
+</body>
+<script>
+    var mCharts = echarts.init(document.querySelector('div'));
+   //配置各个未读最大值
+    var dataMax = [
+        {
+            name: '攻击',
+            max: 100
+        },
+        {
+            name: '防御',
+            max: 100
+        },
+        {
+            name: '速度',
+            max: 100
+        },
+        {
+            name: '智力',
+            max: 100
+        },
+        {
+            name: '生命',
+            max: 100
+        },
+    ]
+    var option = {
+        radar: {
+            indicator: dataMax
+        },
+        series: [
+            {
+                type:'radar',
+                data: [
+                    {
+                        name: '战士',
+                        value: [70, 85, 70, 50, 80]
+                    }, {
+                        name: '刺客',
+                        value: [90, 50, 80, 60, 60]
+                    }
+                ],
+                label:{
+                    show:true
+                },
+                areaStyle:{ //将雷达图数据覆盖部分形成阴影面积
+
+                },
+                itemStyle:{
+                    color:{
+                        type:'radial',  //渐变类型
+                        x:0.5, //圆心坐标
+                        y:0.5,
+                        r:1, //半径辐射范围
+                        colorStops:[{
+                            offset:0,color:'red'  //%0处的颜色
+                        },{
+                            offset:1,color:'blue' //%100处的颜色
+                        }],
+                        globalCoord:false
+                    }
+                }
+            }
+        ]
+    };
+
+    mCharts.setOption(option)
+</script>
+
+</html>

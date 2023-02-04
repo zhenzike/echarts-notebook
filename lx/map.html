@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<script src="./echarts.min.js"></script>
+
+<body>
+    <div style="width: 600px;height: 400px;">
+
+    </div>
+</body>
+<script>
+    var data=[
+        {name:'北京市',value:13},
+        {name:'天津市',value:55},
+        {name:'上海市',value:88},
+        {name:'重庆市',value:56},
+        {name:'河北省',value:35},
+        {name:'河南省',value:21},
+        {name:'云南省',value:21},
+        {name:'辽宁省',value:21},
+        {name:'黑龙江省',value:21},
+        {name:'湖南省',value:21},
+        {name:'安徽省',value:21},
+        {name:'山东省',value:21},
+        {name:'新疆省',value:21},
+        {name:'江苏省',value:78},
+        {name:'浙江省',value:21},
+        {name:'江西省',value:21},
+        {name:'湖北省',value:21},
+        {name:'广西省',value:21},
+        {name:'甘肃省',value:21},
+        {name:'山西省',value:21},
+        {name:'内蒙古省',value:21},
+        {name:'陕西省',value:21},
+        {name:'吉林省',value:21},
+        {name:'福建省',value:21},
+        {name:'贵州省',value:88},
+        {name:'广东省',value:88},
+        {name:'青海省',value:88},
+        {name:'西藏省',value:88},
+        {name:'四川省',value:88},
+        {name:'宁夏省',value:88},
+        {name:'海南',value:88},
+        {name:'台湾',value:88},
+        {name:'香港',value:88},
+        {name:'澳门',value:88},
+        {name:'南海诸岛',value:88},
+    ]
+    var mCharts = echarts.init(document.querySelector('div'));
+    var xhr = new XMLHttpRequest();
+    new Promise(reslove => {
+        xhr.open('GET', 'https://geo.datav.aliyun.com/areas_v3/bound/100000_full.json')
+        xhr.send();
+        xhr.onreadystatechange = function (e) {
+            try {
+                let a = JSON.parse(xhr.responseText);
+                console.log(a);
+                echarts.registerMap('chinaMap', a) //香echarts全局对象中注册
+                reslove(1)
+            } catch {
+                console.log('错误');
+            }
+
+        }
+
+    }).then(() => {
+        var option = {
+            geo: {
+                type: 'map',
+                map: 'chinaMap', //指定地图的依赖数据，map的值需要和registerMap中的第一个参数保持一致
+                roam:true,
+                label:{
+                    show:true
+                }
+            },
+            series:[
+                {
+                    data:data,
+                    geoIndex:0, //配置到第几个geo，这里只有一个，因此是0
+                    type:'map'  //表明是为地图进行服务
+                },
+                {
+                    data:[{value:[118.767413, 32.041544]}], //散点的坐标数据
+                    type:'effectScatter',
+                    coordinateSystem:'geo',  //指明散点使用的坐标系统
+                    rippleEffect:{
+                        scale:5
+                    }
+                }
+            ],
+            visualMap:{
+                min:0,
+                max:88,
+                inRange:{
+                    color:['white','red']
+                },
+                calculable:true 
+            }
+        }
+        mCharts.setOption(option)
+    })
+
+
+</script>
+
+</html>

@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<script src="./echarts.min.js"></script>
+<body>
+    <div style="width: 600px;height: 400px;">
+
+    </div>
+</body>
+<script>
+ var mCharts=echarts.init(document.querySelector('div'));
+    var option={
+        xAxis:{  
+            type:'category',
+            data:['一月','二月','三月','四月','五月','六月','七月'],
+        },
+        yAxis:{
+            type:'value',        
+        },
+        series:[
+            {
+                name:'语文',
+                type:'line', //图标类型
+                data:[3000,2000,1200,1555,800,3100,1900],
+                markPoint:{
+                    data:[
+                        {
+                            type:'max'
+                        },
+                        {
+                            type:'min'
+                        }
+                    ]
+                },
+                markLine:{
+                    data:[
+                        {
+                            type:'average'
+                        }
+                    ]
+                },
+                markArea:{
+                    data:[
+                        [
+                            {
+                                xAxis:'一月'
+                            },
+                            {
+                                xAxis:'二月'
+                            }
+                        ],
+                        [
+                            {
+                                xAxis:'三月'
+                            },
+                            {
+                                xAxis:'四月'
+                            }
+                        ]
+                    ]
+                }
+            }
+        ]
+    };
+    //将配置项设置给echarts实例对象
+    mCharts.setOption(option)
+</script>
+</html>

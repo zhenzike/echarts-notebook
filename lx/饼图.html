@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<script src="./echarts.min.js"></script>
+<body>
+    <div style="width: 600px;height: 400px;">
+
+    </div>
+</body>
+<script>
+    var mCharts=echarts.init(document.querySelector('div'));//初始echarts实例对象，并传递实例对象
+    var option={
+        series:[
+            {
+                type:'pie',
+                data:[{name:'淘宝',value:11220},{name:'京东',value:1220}],
+                label:{
+                    show:true,
+                    formatter:function(arg){
+                       return arg.data.name + '的钱是：'+arg.data.value
+                    }
+                },
+                radius:['30%','70%'],
+                selectedMode:'single'
+            }
+        ]
+    }
+    mCharts.setOption(option)
+</script>
+</html>

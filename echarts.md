@@ -6,7 +6,7 @@
 
 **基本使用步骤**：
 
-1.  引入echarts.js文件
+1.  引入echarts.js文件 【vue中使用npm 并使用 import * as echarts from 'echarts'引入】
 2.  准备一个呈现图表的盒子
 3.  初始化echarts实例对象
 4.  ==准备配置项==。

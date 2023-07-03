@@ -1,5 +1,5 @@
 <template>
-    <div>
+    <div class="leftBox">
       
     </div>
  </template>
@@ -9,7 +9,6 @@
     components: {
       
     },
-    mixins: [],
     props: {
       
     },

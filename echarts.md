@@ -128,7 +128,7 @@ var option={
             show:true, //开启网格
             borderWidth:10, //边框宽度
             borderColor:'red',//边框颜色
-            left:20, //right,top 等控制网格位置
+            left:20, //right,top 等控制网格距离容器边界位置
             width:200, //height 等控制网格大小
         },
         series:[
@@ -211,6 +211,7 @@ datazoom是一个数组，意味着可以配置多个区域缩放器
             type:'category',
             data:['小明','小红','小王']
         },
+        color:['rgb( 145,204,117)'],//柱状图颜色
         yAxis:{
             type:'value',
         },

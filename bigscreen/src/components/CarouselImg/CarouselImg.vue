@@ -91,10 +91,7 @@ export default {
    box-sizing: border-box;
    width: 100%;
    height: 100%;
-   margin-top: 0.5rem;
    padding: 0.5rem;
-   box-shadow: 0 0 2px 1px rgb(33, 76, 230),
-      0 0 2px 1px rgb(33, 76, 230) inset;
    overflow: hidden;
 
 

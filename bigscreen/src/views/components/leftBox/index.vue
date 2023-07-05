@@ -69,7 +69,6 @@ export default {
       flex: 1;
       display: flex;
       flex-direction: column;
-      box-sizing: border-box;
       box-shadow: 0 0 2px 1px rgb(33, 76, 230),
          0 0 2px 1px rgb(33, 76, 230) inset;
 
@@ -96,6 +95,9 @@ export default {
 
    .CarouselImgBox {
       flex: 2;
+      margin-top: 0.5rem;
+      box-shadow: 0 0 2px 1px rgb(33, 76, 230),
+      0 0 2px 1px rgb(33, 76, 230) inset;
    }
 }
 </style>

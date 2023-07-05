@@ -35,6 +35,19 @@ export default {
         showPieImg(data) {
             let myCharts = echarts.init(document.querySelector('.pieImgView'));
             let option = {
+                title: {
+                    text: data[0].name,
+                    subtext: `${data[0].value}%`,
+                    left: 'center',
+                    top: 'center',
+                    textStyle:{
+                        color:'rgb(44,246,249)'
+                    },
+                    subtextStyle:{
+                        color:'rgb(44,246,249)'
+                    },
+                   
+                },
                 series: [
                     {
                         type: 'pie',

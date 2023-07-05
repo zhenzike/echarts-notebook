@@ -1,7 +1,7 @@
 <template>
    <div class="contentBox">
-      <detailData class="firstBox" :barData="barMap" />
-      <myMap  class="twoBox"/>
+      <detailData class="firstBox" :barData="barMap" :lineMap="lineMap" />
+      <myMap class="twoBox" />
    </div>
 </template>
 <script>
@@ -19,12 +19,20 @@ export default {
    },
    data() {
       return {
-         barMap:{
-            '工作站数':80,
-            '提醒次数':50,
-            '调阅次数':55,
-            '互认次数':78,
-            '节省费用':64,
+         barMap: {
+            '工作站数': 80,
+            '提醒次数': 50,
+            '调阅次数': 55,
+            '互认次数': 78,
+            '节省费用': 64,
+         },
+         lineMap: {
+            '一月':52,
+            '二月':82,
+            '三月':42,
+            '四月':5,
+            '五月':24,
+            '六月':38
          }
       }
    },
@@ -43,17 +51,19 @@ export default {
 };
 </script>
 <style lang='scss' scoped>
-.contentBox{
+.contentBox {
    display: flex;
    flex-direction: column;
    box-sizing: border-box;
-   .firstBox{
+
+   .firstBox {
       flex: 1;
       box-shadow: 0 0 2px 1px rgb(33, 76, 230),
-      0 0 2px 1px rgb(33, 76, 230) inset;
+         0 0 2px 1px rgb(33, 76, 230) inset;
       padding: 0.5rem;
    }
-   .twoBox{
+
+   .twoBox {
       flex: 2;
       padding: 0.5rem;
       margin-top: 0.5rem;
